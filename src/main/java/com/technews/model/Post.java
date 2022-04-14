@@ -1,15 +1,16 @@
+
+
 package com.technews.model;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.Entity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-
-import java.util.List;
-import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.*;
+import java.io.Serializable;
+//import java.util.List;
+import java.util.Date;
+import java.util.*;
+
+import java.util.Objects;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -28,7 +29,7 @@ public class Post {
     private Integer userId;
 
     @NotNull
-    @Temporal(TemporalType.Date)
+    @Temporal(TemporalType.DATE)
     @Column(name = "posted_at")
     private Date postedAt = new Date();
 
@@ -112,7 +113,15 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return voteCount == post.voteCount && Objects.equals(id, post.id) && Objects.equals(title, post.title) && Objects.equals(postUrl, post.postUrl) && Objects.equals(userName, post.userName) && Objects.equals(userId, post.userId) && Objects.equals(postedAt, post.postedAt) && Objects.equals(updatedAt, post.updatedAt) && Objects.equals(comments, post.comments);
+        return voteCount == post.voteCount &&
+                Objects.equals(id, post.id) &&
+                Objects.equals(title, post.title) &&
+                Objects.equals(postUrl, post.postUrl) &&
+                Objects.equals(userName, post.userName) &&
+                Objects.equals(userId, post.userId) &&
+                Objects.equals(postedAt, post.postedAt) &&
+                Objects.equals(updatedAt, post.updatedAt) &&
+                Objects.equals(comments, post.comments);
     }
 
     @Override
